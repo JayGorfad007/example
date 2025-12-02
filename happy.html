@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<style>
+    .face {
+        width: 180px;
+        height: 180px;
+        background: #ffcc33;
+        border-radius: 50%;
+        position: relative;
+        margin: 40px;
+    }
+
+  
+    .eye {
+        width: 25px;
+        height: 25px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50px;
+    }
+    .eye::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        background: #1e90ff;
+        border-radius: 50%;
+        position: absolute;
+        top: 6px;
+        left: 6px;
+    }
+    .left-eye { left: 45px; }
+    .right-eye { right: 45px; }
+
+   
+    .mouth {
+        width: 90px;
+        height: 45px;
+        background: #d11a1a;
+        border-radius: 0 0 60px 60px;
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+  
+    .thumb {
+        width: 60px;
+        height: 80px;
+        background: #ffcc33;
+        position: absolute;
+        left: -40px;
+        top: 20px;
+        border-radius: 30px;
+    }
+
+    .thumb::after {
+        content: "";
+        width: 40px;
+        height: 70px;
+        background: #ffcc33;
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        border-radius: 30px;
+        transform: rotate(-20deg);
+    }
+</style>
+</head>
+<body>
+
+<div class="face">
+    <div class="thumb"></div>
+
+    <div class="eye left-eye"></div>
+    <div class="eye right-eye"></div>
+
+    <div class="mouth"></div>
+</div>
+
+</body>
+</html>
