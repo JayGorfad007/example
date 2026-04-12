@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kids Animation Video</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: skyblue;
+    }
+
+    /* Ground */
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+      background: lightgreen;
+    }
+
+    /* Sun */
+    .sun {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 30px orange;
+    }
+
+    /* Ball Character */
+    .ball {
+      position: absolute;
+      bottom: 150px;
+      left: 0;
+      width: 80px;
+      height: 80px;
+      background: red;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sun"></div>
+  <div class="ball" id="ball"></div>
+  <div class="ground"></div>
+
+  <script>
+    let ball = document.getElementById("ball");
+    let pos = 0;
+
+    function moveBall() {
+      pos += 2;
+      ball.style.left = pos + "px";
+
+      if (pos < window.innerWidth) {
+        requestAnimationFrame(moveBall);
+      }
+    }
+
+    moveBall();
+  </script>
+
+</body>
+</html>

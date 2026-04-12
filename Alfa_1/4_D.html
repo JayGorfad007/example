@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #778da9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .Box{
+            border: 1px solid black;
+            width: 280px;
+            padding: 40px;
+            background-color:#e0e1dd;
+            border-radius: 10px;
+        }
+        input[type="text"],input[type="password"]{
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 10px;
+            border-color: white;
+        }
+        label{
+            display: block;
+            font-weight: bold;
+        }
+        .Btn{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .Btn input{
+            padding: 5px 20px;
+            background-color: #70e000;
+        }
+        .Btn input:hover{
+            background-color: aliceblue;
+            cursor: pointer;
+        }
+        a{
+            color: blue;
+            text-align: center;
+        }
+        a:hover
+        {
+            color:green;
+        }
+        .link{
+            text-align: center;
+            margin-top: 20px;
+        } 
+        .Btn input[type="reset"]
+        {
+            background-color: red;
+        }
+        .Btn input[type="reset"]:hover
+        {
+            background-color: aliceblue;
+            border-style:dotted;
+        }
+    </style>
+</head>
+<body>
+    <div class="Box">
+       <form action="" method="get">
+         <label for="userNme">UserName</label>
+        <input type="text" name="userName" id="userName"/>
+
+        <label>Password</label>
+        <input type="Password" name="Password"/>
+
+        <div class="Btn">
+        <input type="submit" value="Login"/>
+        <input type="reset" value="clear"/>
+        </div>   
+    </form>
+
+    <div class="link">
+        New User? <a href="Signup">Register</a>
+    </div>
+
+    </div>
+    
+    
+</body>
+</html>

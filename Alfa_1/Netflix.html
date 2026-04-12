@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Netflix Titel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("/Netflix.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .box {
+            width: 350px;
+            height: 400px;
+            
+            border-radius: 5px;
+            border: solid #ccc;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .tbl {
+            width: 100%;
+        }
+
+        .txt {
+            width: 100%;
+            padding: 10px;
+            border-radius: 7px;
+        }
+
+         .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: dodgerblue;
+            border: none;
+            border-radius: 4px;
+        } 
+
+        .remember {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .h1 {
+            text-align: left;
+        }
+
+        .a {
+            transform: translateX(195%);
+            color: black;
+
+        }
+
+        .Fcbk {
+            transform: translateY(20px);
+            color: #ccc;
+            text-align: left;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <form action="">
+                <table class="tbl">
+                    <tr>
+                        <td class="h1">
+                            <h1 style="color: white;">Sing in</h1>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="text" placeholder="Email or phone number" class="txt"></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="text" placeholder="Password" class="txt"></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="button" value="Sign in" class="btn">
+
+                            <label class="remember">
+                                <input type="checkbox" class="mark"> Remember me
+                                <a href="" class="a">Need help?</a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr class="Fcbk">
+                        <td><a href="">Login with Facebook</a></td>
+                    </tr>
+
+
+
+                </table>
+            </form>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

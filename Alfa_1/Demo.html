@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Left Layout</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, serif;
+        }
+
+        body {
+            background: #fefae0;
+        }
+
+        .navbar {
+            background: #023047;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            color: #ffb703;
+        }
+
+        .section {
+            width: 90%;
+            margin: 30px auto;
+            padding: 30px;
+            background: #ffb703;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #cdb4db;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .img-box {
+            width: 300px;
+        }
+
+        .img-box img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 0 10px #dda15e;
+        }
+
+        .content {
+            flex: 1;
+            font-size: 17px;
+            color: #6b2f2f;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .img-box {
+                width: 100%;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Gallery</a>
+        <a href="#">About Us</a>
+        <a href="#">Log Out</a>
+    </div>
+
+    <!-- SECTION -->
+    <div class="section">
+
+        <div class="img-box">
+            <img src="https://images.pexels.com/photos/3924728/pexels-photo-3924728.jpeg">
+        </div>
+
+        <div class="content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatem nulla itaque ab necessitatibus
+                laboriosam ullam eveniet, velit earum aut alias esse libero sit saepe ex! Laborum alias tempore error!
+                Quis, molestias debitis! Magnam aut, doloribus totam harum libero pariatur perspiciatis, dolorem cumque
+                eum rem aperiam. Nisi labore consectetur sequi molestiae sunt, officia temporibus inventore officiis.
+                Vel veniam itaque voluptas.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="section reverse">
+        <div class="img-box">
+            <img src="https://images.pexels.com/photos/20949069/pexels-photo-20949069.jpeg">
+        </div>
+        <div class="content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatem nulla itaque ab necessitatibus
+                laboriosam ullam eveniet, velit earum aut alias esse libero sit saepe ex! Laborum alias tempore error!
+                Quis, molestias debitis! Magnam aut, doloribus totam harum libero pariatur perspiciatis, dolorem cumque
+                eum rem aperiam. Nisi labore consectetur sequi molestiae sunt, officia temporibus inventore officiis.
+                Vel veniam itaque voluptas.
+            </p>
+        </div>
+    </div>
+
+
+
+
+    <!-- SECTION -->
+    <div class="section">
+
+        <div class="img-box">
+            <img src="https://images.pexels.com/photos/34790913/pexels-photo-34790913.jpeg" alt="Taj Mahal">
+        </div>
+
+        <div class="content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatem nulla itaque ab necessitatibus
+                laboriosam ullam eveniet, velit earum aut alias esse libero sit saepe ex! Laborum alias tempore error!
+                Quis, molestias debitis! Magnam aut, doloribus totam harum libero pariatur perspiciatis, dolorem cumque
+                eum rem aperiam. Nisi labore consectetur sequi molestiae sunt, officia temporibus inventore officiis.
+                Vel veniam itaque voluptas.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="section reverse">
+        <div class="img-box">
+            <img src="https://images.pexels.com/photos/14686356/pexels-photo-14686356.jpeg">
+        </div>
+        <div class="content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatem nulla itaque ab necessitatibus
+                laboriosam ullam eveniet, velit earum aut alias esse libero sit saepe ex! Laborum alias tempore error!
+                Quis, molestias debitis! Magnam aut, doloribus totam harum libero pariatur perspiciatis, dolorem cumque
+                eum rem aperiam. Nisi labore consectetur sequi molestiae sunt, officia temporibus inventore officiis.
+                Vel veniam itaque voluptas.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

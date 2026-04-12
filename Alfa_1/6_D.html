@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Hover Boxes</title>
+
+    <style>
+        .container{
+            padding: 30px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .inner{
+            width: 100%;
+            height: 100%;
+            transition: 0.6s;
+        }
+        .b1{ background: aqua; }
+        .b1:hover .inner{
+            transform: scale(1.2);
+            box-shadow: 0 0 25px cyan;
+        }
+        .b2{ background: tomato; }
+        .b2:hover .inner{
+            transform: rotate(10deg) scale(1.2);
+        }
+        .b3{ background: gold; }
+        .b3:hover .inner{
+            transform: translateY(-20px);
+        }
+        .b4{ background: purple; }
+
+        .b4::after{
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: 0.6s;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box b1">
+            <div class="inner"></div>
+        </div>
+
+        <div class="box b2">
+            <div class="inner"></div>
+        </div>
+
+        <div class="box b3">
+            <div class="inner"></div>
+        </div>
+
+        <div class="box b4">
+            <div class="inner"></div>
+        </div>
+
+    </div>
+
+</body>
+</html>

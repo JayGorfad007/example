@@ -1,0 +1,239 @@
+import React, { useState } from 'react';
+import { Calculator, Plus, Minus, X } from 'lucide-react';
+
+export default function PointerCalculator() {
+  const [baseAddress, setBaseAddress] = useState('0x1000');
+  const [dataType, setDataType] = useState('int');
+  const [operation, setOperation] = useState('add');
+  const [offset, setOffset] = useState('5');
+  const [result, setResult] = useState(null);
+
+  const dataTypeSizes = {
+    'char': 1,
+    'short': 2,
+    'int': 4,
+    'long': 8,
+    'float': 4,
+    'double': 8,
+    'pointer': 8
+  };
+
+  const parseAddress = (addr) => {
+    const cleaned = addr.trim().toLowerCase();
+    if (cleaned.startsWith('0x')) {
+      return parseInt(cleaned, 16);
+    }
+    return parseInt(cleaned, 10);
+  };
+
+  const formatAddress = (num) => {
+    return '0x' + num.toString(16).toUpperCase();
+  };
+
+  const calculate = () => {
+    try {
+      const base = parseAddress(baseAddress);
+      const off = parseInt(offset, 10);
+      const typeSize = dataTypeSizes[dataType];
+
+      if (isNaN(base) || isNaN(off)) {
+        setResult({ error: 'Invalid input values' });
+        return;
+      }
+
+      let newAddress;
+      if (operation === 'add') {
+        newAddress = base + (off * typeSize);
+      } else if (operation === 'subtract') {
+        newAddress = base - (off * typeSize);
+      } else if (operation === 'difference') {
+        const addr2 = parseAddress(offset);
+        if (isNaN(addr2)) {
+          setResult({ error: 'Invalid second address' });
+          return;
+        }
+        const diff = Math.abs(base - addr2);
+        const elements = Math.floor(diff / typeSize);
+        setResult({
+          byteDifference: diff,
+          elementDifference: elements,
+          typeSize: typeSize
+        });
+        return;
+      }
+
+      setResult({
+        originalAddress: formatAddress(base),
+        newAddress: formatAddress(newAddress),
+        offset: off,
+        typeSize: typeSize,
+        bytesChanged: off * typeSize,
+        operation: operation
+      });
+    } catch (e) {
+      setResult({ error: 'Calculation error' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-white rounded-lg shadow-2xl p-8">
+          <div className="flex items-center gap-3 mb-6">
+            <Calculator className="w-8 h-8 text-blue-600" />
+            <h1 className="text-3xl font-bold text-gray-800">Pointer Calculator</h1>
+          </div>
+
+          <div className="space-y-6">
+            {/* Base Address */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Base Address (hex or decimal)
+              </label>
+              <input
+                type="text"
+                value={baseAddress}
+                onChange={(e) => setBaseAddress(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="0x1000 or 4096"
+              />
+            </div>
+
+            {/* Data Type */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Data Type
+              </label>
+              <select
+                value={dataType}
+                onChange={(e) => setDataType(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="char">char (1 byte)</option>
+                <option value="short">short (2 bytes)</option>
+                <option value="int">int (4 bytes)</option>
+                <option value="long">long (8 bytes)</option>
+                <option value="float">float (4 bytes)</option>
+                <option value="double">double (8 bytes)</option>
+                <option value="pointer">pointer (8 bytes)</option>
+              </select>
+            </div>
+
+            {/* Operation */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Operation
+              </label>
+              <div className="grid grid-cols-3 gap-3">
+                <button
+                  onClick={() => setOperation('add')}
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all ${
+                    operation === 'add'
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  <Plus className="w-4 h-4" />
+                  Add
+                </button>
+                <button
+                  onClick={() => setOperation('subtract')}
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all ${
+                    operation === 'subtract'
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  <Minus className="w-4 h-4" />
+                  Subtract
+                </button>
+                <button
+                  onClick={() => setOperation('difference')}
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all ${
+                    operation === 'difference'
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  <X className="w-4 h-4" />
+                  Diff
+                </button>
+              </div>
+            </div>
+
+            {/* Offset */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {operation === 'difference' ? 'Second Address' : 'Offset (number of elements)'}
+              </label>
+              <input
+                type="text"
+                value={offset}
+                onChange={(e) => setOffset(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder={operation === 'difference' ? '0x1020' : '5'}
+              />
+            </div>
+
+            {/* Calculate Button */}
+            <button
+              onClick={calculate}
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl"
+            >
+              Calculate
+            </button>
+
+            {/* Result */}
+            {result && (
+              <div className="mt-6 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                {result.error ? (
+                  <p className="text-red-600 font-medium">{result.error}</p>
+                ) : result.byteDifference !== undefined ? (
+                  <div className="space-y-2">
+                    <h3 className="font-bold text-lg text-gray-800 mb-3">Pointer Difference</h3>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Byte Difference:</span> {result.byteDifference} bytes
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Element Difference:</span> {result.elementDifference} elements
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Element Size:</span> {result.typeSize} bytes
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <h3 className="font-bold text-lg text-gray-800 mb-3">Result</h3>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Original Address:</span> {result.originalAddress}
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">New Address:</span> {result.newAddress}
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Offset:</span> {result.offset} elements
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Bytes Changed:</span> {result.bytesChanged} bytes
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Type Size:</span> {result.typeSize} bytes
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Info Box */}
+          <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <p className="text-sm text-gray-600">
+              <span className="font-semibold">Note:</span> Pointer arithmetic multiplies the offset by the size of the data type. 
+              For example, adding 5 to an int pointer (4 bytes) moves 20 bytes forward in memory.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

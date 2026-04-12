@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Hover Scroll Effect</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #111;
+    }
+
+    /* Container */
+    .container {
+      display: flex;
+      gap: 30px;
+    }
+
+    /* Common Image Box */
+    .img-box {
+      width: 300px;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      /* Smooth Scroll Animation */
+      transition: background-position 2.5s ease, transform 0.5s;
+      cursor: pointer;
+    }
+
+
+    .img-box:hover {
+      transform: scale(1.05);
+    }
+
+    .top-scroll {
+      background-image: url("https://picsum.photos/id/1015/600/900");
+      background-position: top;
+    }
+
+    .top-scroll:hover {
+      background-position: bottom;
+    }
+
+    .bottom-scroll {
+      background-image: url("https://picsum.photos/id/1016/600/900");
+      background-position: bottom;
+    }
+
+    .bottom-scroll:hover {
+      background-position: top;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Image Scroll Top to Bottom -->
+    <div class="img-box top-scroll"></div>
+
+    <!-- Image Scroll Bottom to Top -->
+    <div class="img-box bottom-scroll"></div>
+
+  </div>
+
+</body>
+</html>

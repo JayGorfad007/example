@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Scroll Layout</title>
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        nav {
+            background-color: #fefae0;
+            justify-items: center;
+            /* border-bottom: 2px solid #333; */
+        }
+        ul {
+            list-style: none;
+            display: flex;
+        }
+        li {
+            padding: 12px 16px;
+        }
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: cadetblue;
+            display: block;
+        }
+        a:hover {
+            background-color: azure;
+            color: blue;
+            /* border-radius: 8px; */
+            border-bottom: 8px;
+        }
+        .content {
+            flex: 1;
+            overflow: hidden;
+            /* border-top: 2px solid black; */
+        }
+
+        img {
+            width: 210vh;
+            height: 120vh;
+        }
+        .text {
+            transform: translateY(200px);
+            left: 90px;
+            position: absolute;
+            font-family: 'Annie Use Your Telescope', cursive;
+        }
+        h2 
+        {
+            color: deepskyblue;
+            font-size: 30px;
+        }
+        p 
+        {
+            color: #7CCAD5;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="text">
+        <h2>Welcome to Our Courses</h2>
+        <br>
+        <p>
+            Learn new skills, grow your knowledge, and build a better future with our <br>
+            <br>
+            well-structured and practical courses designed for students and professionals.
+        </p>
+    </div>
+    <div class="content">
+        <img src="education.png" alt="">
+    </div>
+
+
+
+</body>
+
+</html>
